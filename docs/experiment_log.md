@@ -118,3 +118,39 @@ Build classification manifest combining labeled and unlabeled images.
 
 ### Next Step
 - Train first binary CNN baseline
+## 2026-04-23
+
+### Objective
+Train first binary CNN baseline for defect detection.
+
+### Files Changed
+- `Code/models/train_binary_classifier.py`
+
+### Environment
+- Mac for editing in PyCharm
+- AWS for execution
+- Python 3.12 on AWS
+- TensorFlow 2.21.0
+- CPU execution forced due to cuDNN mismatch
+
+### Actions
+- Installed TensorFlow on AWS
+- Attempted GPU execution
+- Encountered cuDNN version mismatch
+- Disabled CUDA for TensorFlow execution
+- Trained a simple CNN for 5 epochs
+- Evaluated on held-out test set
+
+### Results
+- Binary F1 Score: 0.8440
+- Binary Accuracy: 0.8341
+- Best validation accuracy observed: approximately 0.8131
+
+### Notes
+- This establishes a working baseline for defect/no-defect classification
+- Dataset is reasonably balanced for binary classification
+- GPU was intentionally disabled for TensorFlow due to cuDNN mismatch
+- Future improvement options include augmentation, class-specific multi-label classification, or switching to PyTorch for GPU use
+
+### Next Step
+- Save model metrics/results to a tracked output file and then move toward multi-label classification or segmentation.
