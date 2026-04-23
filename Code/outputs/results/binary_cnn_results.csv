@@ -1,0 +1,2 @@
+timestamp,script,framework,device,img_size,batch_size,epochs,accuracy,f1,precision,recall,tn,fp,fn,tp
+2026-04-23T21:12:45,train_binary_classifier_torch.py,PyTorch,NVIDIA A10G,128,64,5,0.8038981702466189,0.8182823442683377,0.8043478260869565,0.832708177044261,911,270,223,1110
