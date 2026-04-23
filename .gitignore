@@ -36,4 +36,4 @@ dist/
 # Env files
 .env
 
-.idea/
+.idea/data/
