@@ -63,3 +63,33 @@ Upgrade Severstal inspection visualization to support transparent overlays and m
 
 ### Next Step
 - Build a classification dataset pipeline for defect vs. no-defect and class-level summaries
+## 2026-04-23
+
+### Objective
+Summarize the Severstal dataset structure and verify whether negative training images are represented in the label CSV.
+
+### Files Changed
+- `Code/utils/summarize_severstal_dataset.py`
+
+### Environment
+- Mac for editing in PyCharm
+- AWS for execution
+- Python 3.12 on AWS
+
+### Actions
+- Counted image files in `train_images`
+- Compared file inventory against `train.csv`
+- Measured number of labeled images and rows
+- Summarized how many defect classes appear per image
+
+### Results
+- Confirmed severe class imbalance, especially domination by Class 3
+- Began verifying whether no-defect images are missing from the processed CSV
+- Produced a dataset inventory baseline to guide classification dataset design
+
+### Notes
+- The processed CSV appears to contain only defect-positive rows
+- Need to verify whether negative examples exist on disk but are absent from the CSV
+
+### Next Step
+- Define binary classification labels using file inventory and CSV presence
