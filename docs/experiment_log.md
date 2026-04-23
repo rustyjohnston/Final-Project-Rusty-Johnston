@@ -93,3 +93,28 @@ Summarize the Severstal dataset structure and verify whether negative training i
 
 ### Next Step
 - Define binary classification labels using file inventory and CSV presence
+
+## 2026-04-23
+
+### Objective
+Build classification manifest combining labeled and unlabeled images.
+
+### Files Changed
+- `Code/data/build_classification_manifest.py`
+
+### Actions
+- Enumerated all image files from disk
+- Merged with defect labels from train.csv
+- Created binary and multi-label targets
+- Saved classification_manifest.csv
+
+### Results
+- Confirmed presence of ~5900 no-defect images
+- Built dataset suitable for classification training
+
+### Notes
+- Dataset is highly imbalanced (class 3 dominant)
+- Binary classification is now straightforward
+
+### Next Step
+- Train first binary CNN baseline
