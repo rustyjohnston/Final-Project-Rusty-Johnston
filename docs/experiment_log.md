@@ -198,3 +198,75 @@ Train binary CNN baseline using PyTorch with GPU acceleration and implement trac
 ### Next Step
 - Add confusion matrix visualization and result plots
 - Begin transition to segmentation (U-Net) using Dice metric
+
+## 2026-04-23
+
+### Objective
+Create segmentation manifest for defect images.
+
+### Files Changed
+- `Code/data/build_segmentation_manifest.py`
+- `Code/outputs/manifests/segmentation_manifest.csv`
+
+### Environment
+- Mac for editing
+- AWS for execution
+- PyTorch environment with CUDA available
+
+### Actions
+- Filtered dataset to only defect-positive rows
+- Aggregated labels to one row per image
+- Created multi-label indicators per class
+- Saved segmentation manifest for training
+
+### Results
+- Built dataset index for segmentation pipeline
+- Identified distribution of number of defect classes per image
+- Confirmed multi-class defect presence
+
+### Notes
+- Segmentation dataset includes only defect images
+- Class imbalance persists (class 3 dominant)
+- Manifest will be used for U-Net training
+
+### Next Step
+- Build mask loader and dataset class for segmentation training
+
+## 2026-04-23
+
+### Objective
+Create segmentation manifest for defect images.
+
+### Files Changed
+- `Code/data/build_segmentation_manifest.py`
+- `Code/outputs/manifests/segmentation_manifest.csv`
+
+### Environment
+- Mac for editing
+- AWS for execution
+- Python 3.12 on AWS
+- PyTorch/CUDA environment available
+
+### Actions
+- Filtered dataset to defect-positive images
+- Aggregated rows to one record per image
+- Added per-class presence indicators
+- Saved segmentation manifest for U-Net training
+
+### Results
+- Total defect images: 6666
+- Images with 1 defect class: 6239
+- Images with 2 defect classes: 425
+- Images with 3 defect classes: 2
+- Class 1 images: 897
+- Class 2 images: 247
+- Class 3 images: 5150
+- Class 4 images: 801
+
+### Notes
+- Most segmentation examples contain only one defect class
+- Class 3 dominates the segmentation dataset
+- Class imbalance should be considered when evaluating Dice by class
+
+### Next Step
+- Build PyTorch segmentation dataset and mask decoder for U-Net training.
