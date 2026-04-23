@@ -154,3 +154,47 @@ Train first binary CNN baseline for defect detection.
 
 ### Next Step
 - Save model metrics/results to a tracked output file and then move toward multi-label classification or segmentation.
+## 2026-04-23
+
+### Objective
+Train binary CNN baseline using PyTorch with GPU acceleration and implement tracked results logging.
+
+### Files Changed
+- `Code/models/train_binary_classifier_torch.py`
+- `Code/outputs/results/binary_cnn_results.csv`
+
+### Environment
+- Mac for editing in PyCharm
+- AWS for execution
+- Python 3.12 on AWS
+- PyTorch 2.5.1 with CUDA 12.1
+- GPU: NVIDIA A10G
+
+### Actions
+- Installed PyTorch with CUDA support on AWS
+- Verified GPU availability
+- Implemented binary CNN classifier in PyTorch
+- Trained model for 5 epochs on full dataset
+- Evaluated on held-out test set
+- Logged results to tracked CSV artifact
+
+### Results
+- Accuracy: 0.8039
+- F1 Score: 0.8183
+- Precision: 0.8043
+- Recall: 0.8327
+- Confusion Matrix:
+  - TN: 911
+  - FP: 270
+  - FN: 223
+  - TP: 1110
+
+### Notes
+- GPU training successfully enabled via PyTorch
+- Training significantly faster than CPU-based TensorFlow run
+- Results slightly lower than TF baseline, but pipeline is now GPU-capable
+- Dataset appears reasonably balanced for binary classification
+
+### Next Step
+- Add confusion matrix visualization and result plots
+- Begin transition to segmentation (U-Net) using Dice metric
