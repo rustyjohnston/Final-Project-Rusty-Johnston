@@ -333,3 +333,36 @@ Train first PyTorch U-Net baseline for defect segmentation.
 
 ### Next Step
 - Generate prediction overlays from the trained U-Net checkpoint for qualitative segmentation evaluation.
+
+## 2026-04-23
+
+### Objective
+Generate qualitative U-Net segmentation prediction figures.
+
+### Files Changed
+- `Code/utils/visualize_unet_predictions.py`
+- `Code/outputs/figures/example_0.png`
+- `Code/outputs/figures/example_1.png`
+- `Code/outputs/figures/example_2.png`
+- `Code/outputs/figures/example_3.png`
+- `Code/outputs/figures/example_4.png`
+
+### Environment
+- Mac for editing
+- AWS for execution
+- PyTorch/CUDA on NVIDIA A10G
+
+### Actions
+- Loaded the trained U-Net baseline checkpoint
+- Ran inference on sample Severstal images
+- Created side-by-side figures showing original image, ground-truth mask, and predicted mask
+
+### Results
+- Saved five qualitative prediction figures for report use
+
+### Notes
+- These figures help interpret the Dice score visually
+- Future improvement should compare successful and failed segmentation examples
+
+### Next Step
+- Improve segmentation Dice using threshold tuning and/or longer controlled training.
