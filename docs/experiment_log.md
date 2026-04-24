@@ -297,3 +297,39 @@ Build PyTorch segmentation dataset and mask decoder.
 
 ### Next Step
 - Implement U-Net model and Dice loss
+
+## 2026-04-23
+
+### Objective
+Train first PyTorch U-Net baseline for defect segmentation.
+
+### Files Changed
+- `Code/models/train_unet_segmentation.py`
+- `Code/outputs/results/unet_segmentation_results.csv`
+
+### Environment
+- Mac for editing
+- AWS for execution
+- Python 3.12 on AWS
+- PyTorch with CUDA
+- GPU: NVIDIA A10G
+
+### Actions
+- Implemented a small U-Net architecture
+- Used 4-channel masks, one channel per defect class
+- Trained for 5 epochs
+- Evaluated validation Dice coefficient
+- Saved tracked results to CSV
+
+### Results
+- Best validation Dice: 0.3147
+- Best epoch: 1
+- Later epochs decreased in Dice, suggesting overfitting, threshold sensitivity, or class-imbalance effects
+
+### Notes
+- This establishes a working segmentation baseline
+- Checkpoint was saved locally on AWS but not committed due to model artifact size
+- Future work should improve Dice using threshold tuning, augmentation, class weighting, or longer controlled training
+
+### Next Step
+- Generate prediction overlays from the trained U-Net checkpoint for qualitative segmentation evaluation.
