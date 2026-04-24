@@ -270,3 +270,30 @@ Create segmentation manifest for defect images.
 
 ### Next Step
 - Build PyTorch segmentation dataset and mask decoder for U-Net training.
+
+## 2026-04-23
+
+### Objective
+Build PyTorch segmentation dataset and mask decoder.
+
+### Files Changed
+- `Code/data/severstal_segmentation_dataset.py`
+
+### Actions
+- Implemented RLE decoding for masks
+- Created PyTorch Dataset for segmentation
+- Built 4-channel mask output (one per class)
+- Verified correct tensor shapes
+
+### Results
+- Image tensor shape: [1, 128, 128]
+- Mask tensor shape: [4, 128, 128]
+- Successfully generated segmentation-ready dataset
+
+### Notes
+- Masks are multi-channel (not single-label)
+- Ready for multi-class segmentation training
+- Data pipeline now complete for U-Net
+
+### Next Step
+- Implement U-Net model and Dice loss
