@@ -22,7 +22,7 @@ TRAIN_CSV = PROJECT_ROOT / "data" / "raw" / "train.csv"
 
 IMG_SIZE = 128
 BATCH_SIZE = 16
-EPOCHS = 10
+EPOCHS = 20
 LR = 1e-3
 SEED = 42
 
