@@ -1,0 +1,3 @@
+task,model,framework,device,primary_metric,primary_value,accuracy,precision,recall,notes
+Binary defect classification,Simple CNN,PyTorch,NVIDIA A10G,F1,0.8182823442683377,0.8038981702466189,0.8043478260869565,0.832708177044261,Defect vs no-defect classification baseline
+Defect localization / segmentation,Small U-Net,PyTorch,NVIDIA A10G,Dice coefficient,0.325323099846996,,,,Four-channel segmentation baseline using encoded defect masks
