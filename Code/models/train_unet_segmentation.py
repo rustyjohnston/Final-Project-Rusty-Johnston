@@ -226,6 +226,10 @@ def main():
             best_dice = val_dice
             torch.save(model.state_dict(), best_path)
 
+    history_path = RESULTS_DIR / "unet_training_history.csv"
+    pd.DataFrame(history).to_csv(history_path, index=False)
+    print(f"Saved training history to: {history_path}")
+
     row = {
         "timestamp": datetime.now().isoformat(timespec="seconds"),
         "script": "train_unet_segmentation.py",
@@ -240,9 +244,7 @@ def main():
         "history_path": str(history_path),
     }
 
-    history_path = RESULTS_DIR / "unet_training_history.csv"
-    pd.DataFrame(history).to_csv(history_path, index=False)
-    print(f"Saved training history to: {history_path}")
+
     append_results(row)
 
     print("\n=== U-Net Segmentation Baseline Results ===")
