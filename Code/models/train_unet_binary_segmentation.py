@@ -68,6 +68,7 @@ def train():
 
     best_dice = 0.0
     best_path = MODELS_DIR / "binary_unet_segmentation.pt"
+    history = []
 
     for epoch in range(EPOCHS):
         model.train()
@@ -95,13 +96,20 @@ def train():
 
         val_dice = np.mean(dices)
         print(f"Epoch {epoch+1} Dice: {val_dice:.4f}")
-
+        history.append({
+            "epoch": epoch + 1,
+            "val_dice": val_dice,
+        })
         if val_dice > best_dice:
             best_dice = val_dice
             torch.save(model.state_dict(), best_path)
 
     print("\nBest Binary Dice:", best_dice)
     print(f"Saved best model to: {best_path}")
+
+    history_path = RESULTS_DIR / "binary_unet_training_history.csv"
+    pd.DataFrame(history).to_csv(history_path, index=False)
+    print(f"Saved binary training history to: {history_path}")
 
     results_path = RESULTS_DIR / "binary_unet_segmentation_results.csv"
     row = {
