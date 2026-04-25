@@ -23,7 +23,7 @@ TRAIN_CSV = PROJECT_ROOT / "data" / "raw" / "train.csv"
 
 IMG_SIZE = 128
 BATCH_SIZE = 16
-EPOCHS = 5
+EPOCHS = 15
 SEED = 42
 LR = 1e-3
 
@@ -202,7 +202,7 @@ def main():
     bce_loss = nn.BCEWithLogitsLoss()
 
     best_dice = -1.0
-    best_path = MODELS_DIR / "unet_segmentation_baseline.pt"
+    best_path = MODELS_DIR / "unet_segmentation_15epoch.pt"
 
     for epoch in range(1, EPOCHS + 1):
         train_loss = train_one_epoch(model, train_loader, optimizer, bce_loss, device)
