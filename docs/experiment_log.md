@@ -405,3 +405,39 @@ Evaluate segmentation prediction threshold sensitivity for Dice score.
 
 ### Next Step
 - Update U-Net training/evaluation to use a consistent validation split and save validation prediction figures.
+
+
+## 2026-04-23
+
+### Objective
+Create final results summary artifact for report preparation.
+
+### Files Changed
+- `Code/analysis/build_results_summary.py`
+- `Code/outputs/results/final_results_summary.csv`
+- `Code/outputs/results/unet_segmentation_results.csv`
+- `Code/outputs/results/unet_training_history.csv`
+
+### Environment
+- AWS execution
+- PyTorch/CUDA on NVIDIA A10G
+
+### Actions
+- Re-ran U-Net baseline to refresh clean segmentation results.
+- Fixed malformed results CSV by regenerating the U-Net results file.
+- Built a final summary table combining binary classification and segmentation metrics.
+- Committed tracked results artifacts to GitHub.
+
+### Results
+- Binary classification F1: 0.8183
+- Binary classification accuracy: 0.8039
+- Segmentation Dice coefficient: 0.3253
+
+### Notes
+- The final summary CSV provides a concise report-ready metrics table.
+- Binary classification performance is acceptable for a baseline.
+- Segmentation performance is a valid first U-Net baseline but should be described as needing improvement.
+- The project now has tracked code, logs, metrics, and qualitative figures.
+
+### Next Step
+- Prepare report figures and final project narrative.
