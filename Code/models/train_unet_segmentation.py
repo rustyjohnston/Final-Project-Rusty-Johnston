@@ -11,6 +11,7 @@ from torch.utils.data import DataLoader
 
 from Code.data.severstal_segmentation_dataset import SeverstalSegmentationDataset
 
+history = []
 
 PROJECT_ROOT = Path(__file__).resolve().parents[2]
 RESULTS_DIR = PROJECT_ROOT / "Code" / "outputs" / "results"
@@ -214,6 +215,13 @@ def main():
             f"- val_dice: {val_dice:.4f}"
         )
 
+        history.append({
+            "epoch": epoch,
+            "train_loss": train_loss,
+            "val_loss": val_loss,
+            "val_dice": val_dice,
+        })
+
         if val_dice > best_dice:
             best_dice = val_dice
             torch.save(model.state_dict(), best_path)
@@ -229,8 +237,12 @@ def main():
         "learning_rate": LR,
         "best_val_dice": best_dice,
         "checkpoint_path": str(best_path),
+        "history_path": str(history_path),
     }
 
+    history_path = RESULTS_DIR / "unet_training_history.csv"
+    pd.DataFrame(history).to_csv(history_path, index=False)
+    print(f"Saved training history to: {history_path}")
     append_results(row)
 
     print("\n=== U-Net Segmentation Baseline Results ===")
