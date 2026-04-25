@@ -1,0 +1,2 @@
+timestamp,script,framework,device,img_size,batch_size,epochs,learning_rate,best_binary_dice
+2026-04-25T21:40:13,train_unet_binary_segmentation.py,PyTorch,NVIDIA A10G,128,16,10,0.001,0.5388206530894551
