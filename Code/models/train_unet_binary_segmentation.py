@@ -99,6 +99,28 @@ def train():
 
     print("\nBest Binary Dice:", best_dice)
 
+    results_path = RESULTS_DIR / "binary_unet_segmentation_results.csv"
+    row = {
+        "timestamp": datetime.now().isoformat(timespec="seconds"),
+        "script": "train_unet_binary_segmentation.py",
+        "framework": "PyTorch",
+        "device": torch.cuda.get_device_name(0) if torch.cuda.is_available() else "CPU",
+        "img_size": IMG_SIZE,
+        "batch_size": BATCH_SIZE,
+        "epochs": EPOCHS,
+        "learning_rate": LR,
+        "best_binary_dice": best_dice,
+    }
+
+    file_exists = results_path.exists()
+    with open(results_path, "a", newline="") as f:
+        writer = csv.DictWriter(f, fieldnames=row.keys())
+        if not file_exists:
+            writer.writeheader()
+        writer.writerow(row)
+
+    print(f"Saved results to: {results_path}")
+
 
 if __name__ == "__main__":
     train()
