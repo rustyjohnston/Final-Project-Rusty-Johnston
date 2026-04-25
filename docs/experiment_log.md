@@ -441,3 +441,36 @@ Create final results summary artifact for report preparation.
 
 ### Next Step
 - Prepare report figures and final project narrative.
+
+
+## 2026-04-23
+
+### Objective
+Train improved binary U-Net segmentation model for defect localization.
+
+### Files Changed
+- `Code/models/train_unet_binary_segmentation.py`
+- `Code/outputs/results/binary_unet_segmentation_results.csv`
+
+### Environment
+- AWS execution
+- PyTorch/CUDA on NVIDIA A10G
+
+### Actions
+- Reformulated segmentation as binary defect localization
+- Combined all defect classes into one mask
+- Trained U-Net for 20 epochs
+- Logged best binary Dice result to tracked CSV artifact
+
+### Results
+- Best binary validation Dice: 0.5597
+- Previous 4-class U-Net Dice: 0.3253
+- Binary formulation improved segmentation performance by approximately 0.2344 Dice points
+
+### Notes
+- Binary defect localization better matches the practical inspection task of identifying defect regions
+- Multi-class segmentation remains future work due to strong class imbalance
+- Performance is below Kaggle-winning solutions, which used more advanced architectures, preprocessing, augmentation, thresholding, and competition-specific optimization
+
+### Next Step
+- Generate final binary segmentation prediction figures for report.
