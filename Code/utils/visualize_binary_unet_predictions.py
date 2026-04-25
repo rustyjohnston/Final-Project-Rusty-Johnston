@@ -10,7 +10,7 @@ from Code.data.severstal_binary_segmentation_dataset import SeverstalBinarySegme
 PROJECT_ROOT = Path(__file__).resolve().parents[2]
 DATA_DIR = PROJECT_ROOT / "data" / "raw"
 FIG_DIR = PROJECT_ROOT / "Code" / "outputs" / "figures"
-MODEL_PATH = PROJECT_ROOT / "Code" / "outputs" / "models" / "unet_segmentation_15epoch.pt"
+MODEL_PATH = PROJECT_ROOT / "Code" / "outputs" / "models" / "binary_unet_segmentation.pt"
 
 FIG_DIR.mkdir(parents=True, exist_ok=True)
 
