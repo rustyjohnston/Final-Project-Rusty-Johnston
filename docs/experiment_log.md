@@ -366,3 +366,42 @@ Generate qualitative U-Net segmentation prediction figures.
 
 ### Next Step
 - Improve segmentation Dice using threshold tuning and/or longer controlled training.
+
+## 2026-04-23
+
+### Objective
+Evaluate segmentation prediction threshold sensitivity for Dice score.
+
+### Files Changed
+- `Code/analysis/threshold_sweep.py`
+
+### Environment
+- AWS execution
+- PyTorch/CUDA on NVIDIA A10G
+
+### Actions
+- Loaded the trained U-Net baseline checkpoint
+- Evaluated Dice over thresholds from 0.10 to 0.90
+- Used a small 50-image sample for fast threshold analysis
+
+### Results
+- Best sampled threshold: 0.40
+- Best sampled Dice: 0.2354
+- Threshold results:
+  - 0.10: 0.2071
+  - 0.20: 0.2254
+  - 0.30: 0.2306
+  - 0.40: 0.2354
+  - 0.50: 0.2296
+  - 0.60: 0.2172
+  - 0.70: 0.2024
+  - 0.80: 0.1582
+  - 0.90: 0.0806
+
+### Notes
+- Sampled threshold Dice was lower than training-script validation Dice, likely because the sweep used the first 50 dataset images rather than the same validation split.
+- Threshold tuning alone does not currently solve the weak segmentation performance.
+- Need to evaluate using a consistent validation split before reporting final threshold results.
+
+### Next Step
+- Update U-Net training/evaluation to use a consistent validation split and save validation prediction figures.
